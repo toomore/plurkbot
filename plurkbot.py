@@ -3,6 +3,8 @@
 import requests
 import re
 import sys
+import setting
+
 
 if __name__ == '__main__':
     ''' How to use.
@@ -11,11 +13,10 @@ if __name__ == '__main__':
     s = requests.Session()
     r = s.post(
         'https://www.plurk.com/Users/login',
-        verify = True,
-        data=
-            {
-                'nick_name': sys.argv[1],
-                'password': sys.argv[2],
+        verify=True,
+        data={
+                'nick_name': setting.NICK_NAME,
+                'password': setting.PASSWORD,
                 'logintoken': 1}
         )
 
