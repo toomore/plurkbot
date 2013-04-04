@@ -4,12 +4,21 @@ import requests
 import re
 import sys
 import setting
+from random import shuffle
+
+def murmur():
+    i = ['我','妳','她']
+    vi = ['剛剛', '昨天', '今天', '早上']
+    v = ['吃了', '買了', '吃完', '沒有買', '沒有吃']
+    n = ['早餐', '午餐', '晚餐', '宵夜']
+
+    map(shuffle, [i, vi, v, n])
+    result = [i[0] for i in [i, vi, v, n]]
+
+    return ''.join(result)
 
 
-if __name__ == '__main__':
-    ''' How to use.
-        python ./plurkbot.py {username} {password} {saysomething}
-    '''
+def post_to_plurk(content):
     s = requests.Session()
     r = s.post(
         'https://www.plurk.com/Users/login',
@@ -27,7 +36,10 @@ if __name__ == '__main__':
         cookies=r.cookies,
         data={
             'uid': uid,
-            'content': sys.argv[3],
+            'content': content,
             'qualifier': ':'
             },
         )
+
+if __name__ == '__main__':
+    post_to_plurk(murmur())
