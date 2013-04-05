@@ -16,6 +16,7 @@ store = opendict('store.txt')
 MRT = opendict('MRT.txt')
 gift = opendict('gift.txt')
 touch = opendict('touch.txt')
+memory = opendict('memory.txt')
 
 
 def murmur_list(f):
@@ -51,3 +52,23 @@ def murmur_4():
     shuffle(new_actor)
     return '收到{0}寄來的{1}，過了這麼多年，還記得{2}嗎？在這令人難以忘懷的{3}...'.format(
             new_actor[0], choice(gift), new_actor[1], choice(time[1:]))
+
+@murmur_list
+def murmur_5():
+    ''' 我常常刻意的走到書店，在那裡找尋妳的過去回憶 '''
+    new_actor = actor[1:]
+    shuffle(new_actor)
+    return '我常常刻意的走到{0}，在那裡找尋{1}的{2}...'.format(
+            choice(store), choice(new_actor), choice(memory))
+
+
+@murmur_list
+def murmur_6():
+    ''' 我牽著妳的手跑過了書店，因為那天下著雨... '''
+    return '我牽著妳的手跑過了{0}，因為那天下著雨...'.format(choice(store))
+
+
+@murmur_list
+def murmur_other():
+    ''' 一個句子...  '''
+    return choice(opendict('other.txt'))
