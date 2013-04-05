@@ -3,3 +3,4 @@
 
 NICK_NAME = ''
 PASSWORD = ''
+DEBUG = False
