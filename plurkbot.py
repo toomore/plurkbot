@@ -6,6 +6,7 @@ import sys
 import setting
 from random import shuffle
 from random import choice
+from Rss import newsyc50
 
 
 get_murmur_list = []
@@ -79,5 +80,6 @@ def post_to_plurk(content):
         )
 
 if __name__ == '__main__':
+    get_murmur_list.append(newsyc50)
     murmur_word = choice(get_murmur_list)()
     post_to_plurk(murmur_word)
