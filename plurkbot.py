@@ -7,6 +7,13 @@ import setting
 from random import shuffle
 from random import sample
 
+get_murmur_list = []
+
+def murmur_list(f):
+    get_murmur_list.append(f.__name__)
+    return f
+
+@murmur_list
 def murmur():
     i = ['我','妳','她']
     vi = ['剛剛', '昨天', '今天', '早上', '中午', '晚上', '深夜']
@@ -15,6 +22,7 @@ def murmur():
 
     return join_word([i, vi, v, n])
 
+@murmur_list
 def murmur_2():
     i = ['輕輕的摸了妳的']
     n = ['臉頰', '額頭', '小酒窩', '眉毛', '耳朵']
@@ -51,5 +59,5 @@ def post_to_plurk(content):
         )
 
 if __name__ == '__main__':
-    #post_to_plurk(murmur())
-    print sample([murmur, murmur_2], 1)[0]()
+    murmur_word = locals().get(sample(get_murmur_list, 1)[0])()
+    post_to_plurk(murmur_word)
