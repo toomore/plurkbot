@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from plurkbot import get_murmur_list
+from murmur import get_murmur_list
 from Rss import get_rss_list
 from random import choice
 import requests
@@ -34,4 +34,7 @@ def post_to_plurk(content, setting):
 def run(setting):
     all_murmur = get_murmur_list + get_rss_list
     murmur_word = choice(all_murmur)()
-    post_to_plurk(murmur_word, setting)
+    if setting.DEBUG:
+        print murmur_word
+    else:
+        post_to_plurk(murmur_word, setting)
