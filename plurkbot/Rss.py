@@ -44,8 +44,14 @@ def pypi_latest():
 def pypi_newest():
     feed = choice_feed('https://pypi.python.org/pypi?%3Aaction=packages_rss')
     return '{0} ({1}) {2} - PyPI Newest Packages'.format(
-            feed.get('link'), feed.get('title').encode('utf-8'),
-            feed.get('summary').encode('utf-8'))
+            feed.get('link'), feed.get('title'), feed.get('summary').encode('utf-8'))
+
+
+@rss_list
+def reddit_python():
+    feed = choice_feed('http://www.reddit.com/r/Python/.rss')
+    return '{0} ({1}) - Reddit / Python'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))
 
 
 @rss_list
