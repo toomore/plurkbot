@@ -36,11 +36,20 @@ def newsyc150():
 def pypi_latest():
     feed = choice_feed('https://pypi.python.org/pypi?%3Aaction=rss')
     return '{0} ({1}) {2} - PyPI Recent Updates'.format(
-            feed.get('link'), feed.get('title'), feed.get('summary').encode('utf-8'))
+            feed.get('link'), feed.get('title').encode('utf-8'),
+            feed.get('summary').encode('utf-8'))
 
 
 @rss_list
 def pypi_newest():
     feed = choice_feed('https://pypi.python.org/pypi?%3Aaction=packages_rss')
     return '{0} ({1}) {2} - PyPI Newest Packages'.format(
-            feed.get('link'), feed.get('title'), feed.get('summary').encode('utf-8'))
+            feed.get('link'), feed.get('title').encode('utf-8'),
+            feed.get('summary').encode('utf-8'))
+
+
+@rss_list
+def digiphoto_tech():
+    feed = choice_feed('http://digiphoto.techbang.com/pages/techniques.rss')
+    return '{0} ({1}) - DIGIPHOTO 拍攝技法'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))

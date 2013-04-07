@@ -13,10 +13,9 @@ def post_to_plurk(content, setting):
         'https://www.plurk.com/Users/login',
         verify=True,
         data={
-                'nick_name': setting.NICK_NAME,
-                'password': setting.PASSWORD,
-                'logintoken': 1}
-        )
+            'nick_name': setting.NICK_NAME,
+            'password': setting.PASSWORD,
+            'logintoken': 1,})
 
     uid = re.search('\"user_id\": ([0-9]+),', r.content).group(1)
 
@@ -26,9 +25,7 @@ def post_to_plurk(content, setting):
         data={
             'uid': uid,
             'content': content,
-            'qualifier': ':'
-            },
-        )
+            'qualifier': ':'},)
 
 
 def run(setting):
