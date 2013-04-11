@@ -29,7 +29,8 @@ def post_to_plurk(content, setting):
 
 
 def run(setting):
-    all_murmur = get_murmur_list + get_rss_list * 2
+    #all_murmur = get_murmur_list + get_rss_list * 2
+    all_murmur = get_rss_list
     murmur_word = choice(all_murmur)()
     if setting.DEBUG:
         print murmur_word
