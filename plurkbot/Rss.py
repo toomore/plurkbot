@@ -11,6 +11,13 @@ def rss_list(f):
     get_rss_list.append(f)
     return f
 
+def only_year(feeds, year):
+    result = []
+    for i in feeds:
+        result.append(i) if i['updated_parsed'].tm_year == 2013 else None
+
+    return result
+
 
 def choice_feed(url):
     return choice(feedparser.parse(url).get('entries'))
@@ -33,6 +40,22 @@ def newsyc150():
 
 
 @rss_list
+def blog_coscup():
+    feeds = feedparser.parse('http://feeds.feedburner.com/coscup?format=xml').get('entries')
+    feed = choice(only_year(feeds, 2003))
+    return '{0} ({1})'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))
+
+
+@rss_list
+def group_coscup():
+    feeds = feedparser.parse('https://groups.google.com/group/coscup-general/feed/rss_v2_0_msgs.xml?num=50').get('entries')
+    feed = choice(only_year(feeds, 2003))
+    return '{0} ({1})'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))
+
+
+@rss_list
 def pypi_latest():
     feed = choice_feed('https://pypi.python.org/pypi?%3Aaction=rss')
     return '{0} ({1}) {2} - PyPI Recent Updates'.format(
@@ -51,6 +74,27 @@ def pypi_newest():
 def reddit_python():
     feed = choice_feed('http://www.reddit.com/r/Python/.rss')
     return '{0} ({1}) - Reddit / Python'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))
+
+
+@rss_list
+def reddit_vim():
+    feed = choice_feed('http://www.reddit.com/r/vim/.rss')
+    return '{0} ({1}) - Reddit / Vim'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))
+
+
+@rss_list
+def reddit_android():
+    feed = choice_feed('http://www.reddit.com/r/Android/.rss')
+    return '{0} ({1}) - Reddit / Android'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))
+
+
+@rss_list
+def reddit_aws():
+    feed = choice_feed('http://www.reddit.com/r/aws/.rss')
+    return '{0} ({1}) - Reddit / AWS'.format(
             feed.get('link'), feed.get('title').encode('utf-8'))
 
 
