@@ -14,7 +14,7 @@ def rss_list(f):
 def only_year(feeds, year):
     result = []
     for i in feeds:
-        result.append(i) if i['updated_parsed'].tm_year == 2013 else None
+        result.append(i) if i['updated_parsed'].tm_year == year else None
 
     return result
 
@@ -42,7 +42,7 @@ def newsyc150():
 @rss_list
 def blog_coscup():
     feeds = feedparser.parse('http://feeds.feedburner.com/coscup?format=xml').get('entries')
-    feed = choice(only_year(feeds, 2003))
+    feed = choice(only_year(feeds, 2013))
     return '{0} ({1})'.format(
             feed.get('link'), feed.get('title').encode('utf-8'))
 
@@ -50,7 +50,7 @@ def blog_coscup():
 @rss_list
 def group_coscup():
     feeds = feedparser.parse('https://groups.google.com/group/coscup-general/feed/rss_v2_0_msgs.xml?num=50').get('entries')
-    feed = choice(only_year(feeds, 2003))
+    feed = choice(only_year(feeds, 2013))
     return '{0} ({1})'.format(
             feed.get('link'), feed.get('title').encode('utf-8'))
 
