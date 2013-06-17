@@ -39,7 +39,7 @@ def newsyc150():
             feed.get('link'), *feed.get('title').encode('utf-8').rsplit(' ', 1))
 
 
-@rss_list
+#@rss_list
 def blog_coscup():
     feeds = feedparser.parse('http://feeds.feedburner.com/coscup?format=xml').get('entries')
     feed = choice(only_year(feeds, 2013))
@@ -47,7 +47,7 @@ def blog_coscup():
             feed.get('link'), feed.get('title').encode('utf-8'))
 
 
-@rss_list
+#@rss_list
 def group_coscup():
     feeds = feedparser.parse('https://groups.google.com/group/coscup-general/feed/rss_v2_0_msgs.xml?num=50').get('entries')
     feed = choice(only_year(feeds, 2013))
