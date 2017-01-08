@@ -104,8 +104,15 @@ def digiphoto_tech():
     return '{0} ({1}) - DIGIPHOTO 拍攝技法'.format(
             feed.get('link'), feed.get('title').encode('utf-8'))
 
-@rss_list
+
 def pinkoi():
     feed = choice_feed('http://feeds.feedburner.com/pinkoi-magazine')
     return '{0} ({1}) - Pinkoi 設計誌'.format(
+            feed.get('link'), feed.get('title').encode('utf-8'))
+
+
+@rss_list
+def photos_toomore():
+    feed = choice_feed('https://photos.toomore.net/rss')
+    return '{0} ({1}) - Toomore Photos'.format(
             feed.get('link'), feed.get('title').encode('utf-8'))
